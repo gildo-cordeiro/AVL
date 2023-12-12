@@ -68,17 +68,17 @@ func getBalance(node *Node) int {
 	return height(node.Left) - height(node.Right)
 }
 
-// A função insert insere um novo nó com uma chave específica na árvore AVL e retorna a nova raiz da árvore.
-func insert(root *Node, key int) *Node {
+// A função Insert insere um novo nó com uma chave específica na árvore AVL e retorna a nova raiz da árvore.
+func Insert(root *Node, key int) *Node {
 	// 1: Insira o nó como uma BST
 	if root == nil {
 		return &Node{Key: key, Height: 1}
 	}
 
 	if key < root.Key {
-		root.Left = insert(root.Left, key)
+		root.Left = Insert(root.Left, key)
 	} else if key > root.Key {
-		root.Right = insert(root.Right, key)
+		root.Right = Insert(root.Right, key)
 	} else { // Chaves iguais não são permitidas
 		return root
 	}
@@ -113,10 +113,10 @@ func insert(root *Node, key int) *Node {
 }
 
 // A função inorderTraversal percorre a árvore AVL em ordem (esquerda, raiz, direita) e imprime as chaves dos nós.
-func inorderTraversal(root *Node) {
+func InorderTraversal(root *Node) {
 	if root != nil {
-		inorderTraversal(root.Left)
+		InorderTraversal(root.Left)
 		fmt.Printf("%d ", root.Key)
-		inorderTraversal(root.Right)
+		InorderTraversal(root.Right)
 	}
 }
